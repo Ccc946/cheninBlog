@@ -1,16 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store'
-
-//导入css初始化样式
-import './assets/css/init.css'
-//导入css适配 px2rem
-import 'amfe-flexible'
-//导入动画插件
-import animated from 'animate.css';
-Vue.use(animated)
-
+import { createStore } from './store'
+import '@/styles/index.less'
+import './getInitData'
 //过滤器
 import * as filters from './filters'
 Object.keys(filters).forEach((key) => {
@@ -18,7 +11,7 @@ Object.keys(filters).forEach((key) => {
 })
 
 Vue.config.productionTip = false
-
+const store = createStore()
 new Vue({
   router,
   store,
