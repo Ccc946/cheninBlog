@@ -1,87 +1,45 @@
 <template>
-    <div id="layout" @click="cancleShow">
-        <!-- 导航栏 -->
-        <Navigation></Navigation>
-
-        <transition>
-            <keep-alive>
-                <router-view :class="attr"></router-view>
-            </keep-alive>
-        </transition>
-        
-    </div>
+  <div id="layout" @click="cancleShow">
+    <!-- 导航栏 -->
+    <Navigation></Navigation>
+    <!-- 主体内容 -->
+    <keep-alive>
+      <router-view class="content-view"></router-view>
+    </keep-alive>
+    <!-- 返回顶部 -->
+    <back-top></back-top>
+  </div>
 </template>
 
 <script>
-    import Navigation from '@/components/Navigation/index.vue'
-    import { screenType } from '@/utils/screenSize'
-    export default {
-        components:{
-            Navigation
-        },
-        data() {
-            return {
-                attr:''
-            }
-        },
-        mounted() {
-            this.attr = screenType();
-            addEventListener('resize', this.screenResize);
-        },
-        methods:{
-            screenResize() {
-                this.attr = screenType();
-            },
-            cancleShow() {
-                this.$store.commit('SET_SHOW', false);
-            }
-        },
-        destroyed() {
-            removeEventListener('resize', this.screenResize);
-        }
-    }
+export default {
+  components: {
+    Navigation: () => import("@/components/Navigation"),
+    BackTop: () => import("@/components/BackTop"),
+  },
+  methods: {
+    cancleShow() {
+      this.$store.commit("SET_SHOW", false);
+    },
+  },
+};
 </script>
 
 <style lang="less" scoped>
-    #container {
-        border-top: 1px solid transparent;
-    }
-    .router-view {
-        width: 100%;
-        min-height: 100%;
-        .router-view-sm &{
-            position: absolute;
-            left: 0;
-            top: 0;
-            backface-visibility: hidden;
-            transition: all .5s cubic-bezier(0.55, 0, 0.1, 1);
-            &.slide-forward-enter,
-            &.slide-back-leave-active {
-                opacity: 0;
-                transform: translate3d(100%, 0, 0);
-            }
-            &.slide-forward-leave-active,
-            &.slide-back-enter {
-                opacity: 0;
-                transform: translate3d(-100%, 0, 0);
-            }
-        }
-        .router-view-lg &{
-            transition: all 1s cubic-bezier(0.55, 0, 0.1, 1);
-            &.slide-forward-enter,
-            &.slide-back-leave-active {
-                opacity: 0;
-                position: absolute;
-                left: 0;
-                top: 0;
-            }
-            &.slide-forward-leave-active,
-            &.slide-back-enter {
-                opacity: 0;
-                position: absolute;
-                left: 0;
-                top: 0;
-            }
-        }
-    }
+.content-view {
+    position: absolute;
+    top: 60px;
+    background-color: #F2E8D9;
+    width: 100%;
+  }
+@media screen and (min-width: 1200px) {
+  .content-view {
+    top: 80px;
+    background-color: #F2E8D9;
+    width: 80%;
+    margin-left: 10%;
+    box-shadow: 2px 2px 10px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+  }
+}
 </style>

@@ -8,6 +8,11 @@ const constantRouterMap = [
           path: '/',
           name: 'Home',
           component: () =>import('@/views/Home/index.vue')
+        },
+        {
+          path: '/message',
+          name: 'Message',
+          component: () =>import('@/views/Message/index.vue')
         }
       ]
     },

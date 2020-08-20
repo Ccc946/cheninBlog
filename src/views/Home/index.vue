@@ -17,7 +17,4 @@
 </script>
 
 <style lang="less" scoped>
-.home-layout {
-    height: 1000px;
-}
 </style>

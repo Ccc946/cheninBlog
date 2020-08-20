@@ -1,179 +1,154 @@
-@navBag: #F0EFED;
-.navigation-container {
+@themeColor: #fa8c35;
+.nav {
     position: fixed;
-    z-index: 200;
+    top: 0;
+    left: 0;
     width: 100%;
-    background-color: @navBag;
-    border-bottom: 1px solid #ddd;
-    .navigation-item {
-        position: relative;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 0 auto;
-        z-index: 100;
-        .logo-img {
-            height: 50px;
-            img {
-                height: 100%;
-            }
-        }
-        .navigation-box {
-            text-align: center;
-            li {
-                height: 50px;
-                line-height: 50px;
-                cursor: pointer;
-            }
-        }
-        .search-box {
-            border: 1px solid #ccc;
-            height: 30px;
-            background-color: #fff;
-            border-radius: 15px;
-            display: flex;
-            padding: 0 10px;
-            cursor: pointer;
-            &:hover {
-                border: 1px solid #bbb;
-            }
-            input {
-                border: 1px solid rgba(0, 0, 0, 0);
-                outline: none;
-                font-size: 14px;
-            }
-        }
-    } 
-}
-
-@media screen and (min-width: 750px) {
-    .navigation-item {
-        .search-box {
-            margin-right: 10px;
-            img {
-                margin-left: -3px;
-            }
-            input {
-                display: block;
-            }
-        }
-        .logo-img {
-            margin-left: 10px;
-            span {
-                display: none;
-            }
-        }
-        .navigation-box {
-            display: flex;
-            justify-content: center;
-            li {
-                width: 80px;
-            }
-            li:hover {
-                background-color: #EAE3D5;
-                border-bottom: 2px solid #8785ff;
-            }
-        }
-        .nav-bar {
-            display: none;
-        }
-    }
-    .side-nav {
-        display: none;
-    }
-    .moblie-search {
-        display: none;
-    }
-}
-@media screen and (max-width: 750px) {
-    .navigation-item {
-        width: 100%;
-        .search-box {
-            width: 32px;
-            height: 32px;
-            border-radius: 16px;
-            margin-right: 5px;
-            img {
-                margin-left: -3px;
-            }
-            input {
-                display: none;
-            }
-        }
-        .logo-img {
-            span {
-                display: block;
-                line-height: 50px;
-                font-size: 18px;
-            }
-            img {
-                display: none;
-            }
-        }
-        .navigation-box {
-            display: none;
-        }
-        .nav-bar {
-            display: block;
-            cursor: pointer;
-            margin-left: 5px;
-        }
-    }
-    .side-nav {
-        display: block;
-        position: absolute;
-        height: 100vh;
-        background-color: @navBag;
+    height: 60px;
+    z-index: 999;
+    background-color: #fff;
+    box-shadow: 0 0 1px 3px rgba(0, 0, 0, 0.2);
+    .nav-container {
+      width: 80%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      .chenin-logo {
         width: 200px;
-        z-index: 21;
-        left: -200px;
-        transition: left 1s;
-        ul {
-            li {
-                text-align: left;
-                height: 50px;
-                line-height: 50px;
-                padding-left: 15px;
-                cursor: pointer;
-                &:hover {
-                    background-color: #ddd;
-                }
-            }
+      }
+      .nav-box {
+        height: 60px;
+        .nav-item {
+          position: relative;
+          line-height: 60px;
+          width: 80px;
+          float: left;
+          text-align: center;
+          cursor: pointer;
+          a .nav-content:hover {
+            background-color: @themeColor;
+            color: #fff;
+          }
         }
+      }
     }
-    .moblie-search {
+  }
+  .moblie-nav {
+    display: none;
+    position: relative;
+    .nav-toggle {
+      position: absolute;
+      right: 10px;
+      font-size: 25px;
+      color: @themeColor;
+      line-height: 60px;
+    }
+  }
+  .aside-nav {
+    position: fixed;
+    left: 0;
+    top: 60px;
+    width: 250px;
+    height: 100%;
+    background-color: #545c64;
+    box-shadow: 0 3px 1px 2px rgba(0, 0, 0, 0.1);
+    left: -250px;
+    transition: left 0.5s;
+    overflow-y: auto;
+    z-index: 999;
+  }
+  .el-menu {
+      border-right-width: 0;
+  }
+  .toggle {
+    left: 0;
+  }
+
+
+  .search {
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    .iconfont {
+      font-size: 20px;
+      &:hover {
+        color: @themeColor;
+      }
+    }
+  }
+  .showSearch {
+    right: 0px!important;
+  }
+  .search-box {
+    position: absolute;
+    top: 60px;
+    right: 100%;
+    width: 100%;
+    height: 120px;
+    transition: right .5s;
+    background-color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    .cancel {
+      height: 30px;
+      line-height: 30px;
+      position: relative;
+      .iconfont {
+        font-size: 25px;
         position: absolute;
-        background-color: #ddd;
-        width: 100%;
-        height: 100px;
-        font-size: 14px;
-        padding-top: 30px;
-        transition: left 1s;
-        left: -100%;
-        z-index: 20;
-        .search-query{
-            border: 1px solid #ccc;
-            border-radius: 15px;
-            outline: none;
-            height: 30px;
-            width: 200px;
-            padding-left: 10px;
-            margin: 0 15px;
-        }
-        .search-btn {
-            height: 30px;
-            width: 80px;
-            cursor: pointer;
-            border-radius: 15px;
-            outline: none;
-            border: 1px solid #ccc;
-            background-color: #41a1f0;
-        }
-        .close-search {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            cursor: pointer;
-        }
+        right: 10px;
+        top: 10px;
+      }
     }
-}
+    .search-item {
+      padding: 15px 10px;
+      .el-input {
+        width: 80%;
+        margin-right: 10px;
+      }
+    } 
+  }
+  
+
+  @media screen and (min-width: 1200px) {
+    .aside-nav {
+      left: -250px;
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    .pc-nav {
+      display: none;
+    }
+    .moblie-nav {
+      display: block;
+    }
+    .nav {
+      .nav-container {
+        .chenin-logo {
+          order: 1;
+          flex: 1;
+          text-align: center;
+        }
+        .nav-box {
+          order: 0;
+        }
+        .search {
+          order: 2;
+        }
+      }
+    }
+    .moblie-nav {
+      .nav-toggle {
+        position: relative;
+        left: 10px;
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .nav .nav-container {
+      width: 100%;
+    }
+  }
+  .aside-nav::-webkit-scrollbar{
+    width:0px;
+  }
