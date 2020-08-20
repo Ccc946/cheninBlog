@@ -39,9 +39,11 @@
             unique-opened
           >
             <span v-for="nav_list in nav_lists" :key="nav_list.id">
-              <el-menu-item :index="nav_list.id.toString()" @click="handleSelect(nav_list.path)">
-                <span slot="title">{{nav_list.name}}</span>
-              </el-menu-item>
+              <router-link :to="nav_list.path">
+                <el-menu-item :index="nav_list.id.toString()">
+                  <span slot="title">{{nav_list.name}}</span>
+                </el-menu-item>
+              </router-link>
             </span>
           </el-menu>
         </div>
@@ -101,9 +103,6 @@ export default {
     };
   },
   methods: {
-    handleSelect(path) {
-      this.$router.push(path);
-    },
     toShow() {
       this.$store.commit("SET_SHOW", !this.$store.state.navigation.toShow);
     },
