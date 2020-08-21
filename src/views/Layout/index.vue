@@ -4,10 +4,12 @@
     <Navigation></Navigation>
     <!-- 主体内容 -->
     <keep-alive>
-      <router-view class="content-view"></router-view>
+      <router-view class="content-view clearfix"></router-view>
     </keep-alive>
     <!-- 返回顶部 -->
     <back-top></back-top>
+    <!-- footer -->
+    <Footer></Footer>
   </div>
 </template>
 
@@ -16,6 +18,7 @@ export default {
   components: {
     Navigation: () => import("@/components/Navigation"),
     BackTop: () => import("@/components/BackTop"),
+    Footer: () => import('@/components/Footer')
   },
   methods: {
     cancleShow() {
@@ -26,15 +29,18 @@ export default {
 </script>
 
 <style lang="less" scoped>
+#layout {
+  padding-top: 1px;
+}
 .content-view {
-    position: absolute;
-    top: 60px;
-    background-color: #F2E8D9;
+    margin-top: 60px;
+    background-image: url('../../assets/images/note-bg.jpg');
+    background-repeat: repeat;
     width: 100%;
   }
 @media screen and (min-width: 1200px) {
   .content-view {
-    top: 80px;
+    margin-top: 80px;
     background-color: #F2E8D9;
     width: 80%;
     margin-left: 10%;

@@ -1,6 +1,6 @@
 <template>
 	<router-link :to="path">
-		<div class="tag-box">
+		<div class="tag-box clearfix">
 			<i class="iconfont icon-left" :class="{ color }"></i>
 			{{msg}}
 		</div>

@@ -433,6 +433,13 @@ ul,ol,li{
     list-style-type:none;
 }
 /*公共方法*/
+.clearfix:before, .clearfix:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  overflow: hidden;
+  clear: both;
+}
 .clear{
     clear: both;
 }

@@ -9,7 +9,7 @@
         <!-- pc端 导航栏 -->
         <ul class="pc-nav">
           <div
-            class="nav-item"
+            class="nav-item clearfix"
             v-for="nav_list in nav_lists"
             :key="nav_list.id"
             @mouseover="nav_list.toShow = true"
@@ -75,19 +75,19 @@ export default {
         {
           id: 2,
           name: "心情随笔",
-          path: "",
+          path: "/causerie",
           toShow: false,
         },
         {
           id: 3,
           name: "技术分享",
-          path: "",
+          path: "/technology",
           toShow: false,
         },
         {
           id: 4,
-          name: "兴趣爱好",
-          path: "",
+          name: "博客社区",
+          path: "/blog",
           toShow: false,
         },
         {
@@ -96,7 +96,7 @@ export default {
           path: "/message",
           toShow: false,
         },
-        { id: 6, name: "关于我", path: "", children: null, toShow: false },
+        { id: 6, name: "关于我", path: "/aboutme", children: null, toShow: false },
       ],
       search: "",
       showSearch: false,
