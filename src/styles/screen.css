@@ -1,0 +1,10 @@
+@media screen and (max-width: 875px) {
+    .screen {
+      width: 90%;
+    }
+  }
+  @media screen and (max-width: 385px) {
+    .screen {
+      width: 85%;
+    }
+  }

@@ -1,5 +1,5 @@
 <template>
-  <div class="aboutme">
+  <div class="aboutme screen">
     <h1>关于我</h1>
     <div class="information">chenin • 2018-10-21 • 0 评论 • 2855 阅读</div>
     <div class="content">
@@ -65,8 +65,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
 .aboutme {
-    padding: 10px 50px;
+    padding: 10px 30px;
   h1 {
     text-align: center;
     font-size: 30px;
@@ -83,4 +84,22 @@ export default {
 /deep/ .el-timeline-item .el-timeline-item__tail {
     border-left: 2px solid #409EFF;
 }
+@media screen and (max-width: 875px) {
+    .screen {
+      width: 90%;
+      padding: 10px 40px;
+    }
+  }
+  @media screen and (max-width: 575px) {
+    .screen {
+      width: 90%;
+      padding: 10px 20px;
+    }
+  }
+  @media screen and (max-width: 385px) {
+    .screen {
+      width: 90%;
+      padding: 10px 25px;
+    }
+  }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <main class="causerie">
+    <main class="causerie screen">
       <el-row :gutter="20">
         <el-col :md="14">
           <div class="causerie-title">心情随笔</div>
@@ -68,4 +68,22 @@
         }
     }
 }
+@media screen and (max-width: 875px) {
+    .screen {
+      width: 90%;
+      padding: 10px 40px;
+    }
+  }
+  @media screen and (max-width: 575px) {
+    .screen {
+      width: 90%;
+      padding: 10px 20px;
+    }
+  }
+  @media screen and (max-width: 385px) {
+    .screen {
+      width: 90%;
+      padding: 10px 25px;
+    }
+  }
 </style>

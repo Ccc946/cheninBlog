@@ -2,37 +2,64 @@
     <div>
         <div class="comment-item">
             <div class="comment-left">
-                <a href="javascript:viod(0);" class="user-avatar">
-                    <img src="../../assets/images/avatar/0.jpg" alt="avatar">
+                <a class="user-avatar">
+                    <img :src="img" alt="avatar">
                 </a>
             </div>
             <div class="comment-right">
                 <div class="comment-head">
-                    <a href="javascript:viod(0);" class="user-name">chenin</a>
+                    <a :href="commentList.url" class="user-name">{{commentList.name}}</a>
                 </div>
                 <div class="comment-body">
-                    <div class="comment-msg">为什么我数组通过索引修改值之后，界面没有变呢？</div>
+                    <div class="comment-msg">{{commentList.content}}</div>
                 </div>
                 <div class="comment-foot">
-                    <div class="comment-date">3天前</div>
-                    <div class="comment-reply cursor" @click="reply"><i class="iconfont icon-huifu"></i>回复</div>
+                    <div class="comment-date">{{commentList.datetime | formatDateTime}}</div>
+                    <div class="comment-reply cursor" @click="reply = !reply"><i class="iconfont icon-huifu"></i>回复</div>
                 </div>
-                <ChildrenComment></ChildrenComment>
-                <WriteComment v-show="false"></WriteComment>
+                <div class="reply"  v-show="reply">
+                    <div class="cancelReply" @click="reply=false">
+                        <i class="iconfont icon-cancel"></i>
+                    </div>
+                    <WriteComment title="回复评论" :commentList="commentList" :articleID="commentList.article_id"></WriteComment>
+                </div>
+                <section v-for="item in children" :key="item.id" v-show="item.length !== 0">
+                    <ChildrenComment :children="item"></ChildrenComment>
+                </section>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import { getChildrenComment } from "@/api/client.js"
     export default {
+        props: {
+            commentList: {
+                type: Object,
+                default () {
+                return {}
+                }
+            }
+        },
         components: {
             WriteComment: () => import('@/components/WriteComment'),
             ChildrenComment: () => import('./ChildrenComment')
         },
-        methods: {
-            reply() {
+        data() {
+            return {
+                reply: false,
+                img: 'http://localhost:3000/images/avatar/' + this.commentList.avatar + '.jpg',
+                children: []
             }
+        },
+        created() {
+            const res = getChildrenComment(this.commentList.id);
+            res.then((data) => {
+                this.children = data;
+            }).catch((err) => {
+                console.log(err)
+            });
         }
     }
 </script>
@@ -72,6 +99,22 @@
                  font-size: 18px;
              }
          }
+     }
+ }
+ .reply {
+     padding: 15px 10px;
+     position: relative;
+     .cancelReply {
+         position: absolute;
+         right: 10px;
+         top: 10px;
+         width: 26px;
+         height: 26px;
+         background-color: rgba(0, 0, 0, 0.1);
+         border-radius: 13px;
+         text-align: center;
+         line-height: 26px;
+         cursor: pointer;
      }
  }
 </style>

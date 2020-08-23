@@ -1,5 +1,5 @@
 <template>
-    <div class="home-layout">
+    <div class="home-layout screen">
         <MainBody v-if="!($store.state.app.currEntry)"></MainBody>   
     </div>
 </template>
@@ -17,4 +17,5 @@
 </script>
 
 <style lang="less" scoped>
+
 </style>

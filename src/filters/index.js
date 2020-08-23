@@ -35,7 +35,13 @@ export const parseTime = (time, cFormat) => {
     return time_str
 }
 
+function rTime(date) {
+    var json_date = new Date(date).toJSON();
+    return new Date(new Date(json_date) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '') 
+}
+
 export const formatDateTime = time => {
+    time = rTime(time)
     let now = new Date(),
         t = now - new Date(time)
 

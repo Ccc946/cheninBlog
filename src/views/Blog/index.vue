@@ -1,5 +1,5 @@
 <template>
-  <main class="main-body">
+  <main class="main-body screen">
     <el-row :gutter="20">
       <el-col :md="18">
         <div class="blog-dalao">
@@ -213,8 +213,8 @@ blockquote {
   background: 0 0 !important;
   padding: 20px 10px;
   .pre-content {
-      padding-top: 20px;
-      padding-left: 20px;
+      padding: 20px;
+      overflow-x: auto;
       p {
           line-height: 25px;
           font-size: 18px;
@@ -245,4 +245,22 @@ blockquote {
         }
     }
 }
+@media screen and (max-width: 875px) {
+    .screen {
+      width: 90%;
+      padding: 10px 40px;
+    }
+  }
+  @media screen and (max-width: 575px) {
+    .screen {
+      width: 90%;
+      padding: 10px 20px;
+    }
+  }
+  @media screen and (max-width: 385px) {
+    .screen {
+      width: 90%;
+      padding: 10px 25px;
+    }
+  }
 </style>

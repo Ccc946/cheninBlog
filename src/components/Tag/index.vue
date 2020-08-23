@@ -1,8 +1,8 @@
 <template>
 	<router-link :to="path">
-		<div class="tag-box clearfix">
-			<i class="iconfont icon-left" :class="{ color }"></i>
-			{{msg}}
+		<div class="tag-box clearfix" :style="bgcolor">
+			<i class="sanjiao" :style="color"></i>
+			{{tags.name}}
 		</div>
 	</router-link>
 </template>
@@ -10,25 +10,17 @@
 <script>
 export default {
 	name: 'Tag',
-	// props: {
-    //     path: {
-    //         type: String,
-    //         required: true
-    //     },
-    //     msg: {
-    //         type: String,
-    //         required: true
-    //     },
-    //     color: {
-    //         type: String,
-    //         default: '#4cae4c'
-    //     }
-    // },
+	props: {
+        tags: {
+            type: Object,
+            default: () => {}
+        },
+    },
     data() {
         return {
-            msg: 'Vue',
             path: '#',
-            color: '#4cae4c'
+            bgcolor: 'background-color: ' + this.tags.color + ';',
+            color: 'border-right: 9px solid ' + this.tags.color + ';'
         }
     }
 }
@@ -49,15 +41,14 @@ export default {
         border-radius: 0 5px 5px 0;
         margin: 5px 9px 5px 18px;
         background-color: #4cae4c;
-        .iconfont {
-            color: #4cae4c;
-        }
-        i {
+        .sanjiao {
             position: absolute;
-            left: -26px;
-            top: -9px;
-            font-size: 27px;
-           border: 9px solid transparent;
+            left: -18px;
+            top: 0px;
+            border-top: 9px solid #fff;
+            border-left: 9px solid #fff;
+            border-bottom: 9px solid #fff;
+            border-right: 9px solid #4cae4c;
         }
         &:after {
             content: " ";

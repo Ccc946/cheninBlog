@@ -2,10 +2,10 @@
   <div class="article">
     <div class="article-item">
       <a
-        :href="tags[0].path"
-        target="_blank"
+        :href="article.git_add"
+        target="_self"
         aria-label="Github"
-        class="github-corner github"
+        class="github-corner github cursor"
         style="fill: rgb(74, 183, 189);color: rgb(255, 255, 255);"
       >
         <svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true">
@@ -23,21 +23,20 @@
           />
         </svg>
       </a>
-      <h2 class="article-title">react搭建五子棋平台</h2>
-      <div class="time">2020-5-18</div>
-      <div class="desc">react搭建五子棋平台
-          <span class="look-more hover">查看更多</span>
+      <h2 class="article-title cursor" @click="showArticle">{{article.title}}</h2>
+      <div class="time">{{article.datetime | parseTime('{y}-{m}-{d}')}}</div>
+      <div class="desc">{{article.summarize || article.title}}
+          <span class="look-more hover" @click="showArticle">查看更多</span>
       </div>
       <div class="comment cursor">
           <i class="iconfont icon-huifu"></i>
-          <div class="comment-total">66</div>
+          <div class="comment-total">{{article.comment_number}}</div>
           <div class="comment-title">回复</div>
       </div>
       <ul class="tags">
-        <Tag></Tag>
-        <Tag></Tag>
-        <Tag></Tag>
-        <Tag></Tag>
+        <li v-for="item in article.tags" :key="item.id">
+          <Tag :tags="item"></Tag>
+        </li>
       </ul>
     </div>
   </div>
@@ -45,6 +44,12 @@
 
 <script>
 export default {
+  props: {
+    article: {
+      type: [Object, Array],
+      default: () =>{}
+    }
+  },
   components: {
     Tag: () => import("@/components/Tag"),
   },
@@ -52,6 +57,11 @@ export default {
     return {
       tags: [{ id: 1, path: "https://www.baidu.com/", mag: "Vue", color: "#DB5640" }],
     };
+  },
+  methods: {
+    showArticle() {
+      this.$router.push('/article/' + this.article.id)
+    }
   },
 };
 </script>

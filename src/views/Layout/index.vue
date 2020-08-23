@@ -3,9 +3,9 @@
     <!-- 导航栏 -->
     <Navigation></Navigation>
     <!-- 主体内容 -->
-    <keep-alive>
-      <router-view class="content-view clearfix"></router-view>
-    </keep-alive>
+    
+    <router-view class="content-view clearfix"></router-view>
+    
     <!-- 返回顶部 -->
     <back-top></back-top>
     <!-- footer -->

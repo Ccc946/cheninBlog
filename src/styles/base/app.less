@@ -364,18 +364,18 @@ html,body{
     overflow-x: hidden;
   }
   /* 滚动条样式 */
-  body::-webkit-scrollbar{
+  *::-webkit-scrollbar{
     /* width:0px; */
     width:5px;
     height:5px;
   }
-body::-webkit-scrollbar-track{/*外层轨道，可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果（位置3）*/
+*::-webkit-scrollbar-track{/*外层轨道，可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果（位置3）*/
   background:#fff;
 }
-body::-webkit-scrollbar-track-piece{/*内层轨道，滚动条中间部分（位置4）*/
+*::-webkit-scrollbar-track-piece{/*内层轨道，滚动条中间部分（位置4）*/
   background:#e9e9e9;
 }
-body::-webkit-scrollbar-thumb{/*滚动条里面可以拖动的那部分（位置5）*/
+*::-webkit-scrollbar-thumb{/*滚动条里面可以拖动的那部分（位置5）*/
 background:#c9c9c9;
 border-radius:4px;
 }

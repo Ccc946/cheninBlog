@@ -66,4 +66,10 @@
         transition: bottom 1s;
         background-size: cover;
     }
+    @media screen and (max-width: 1200px) {
+        #back-top {
+            width: 40px;
+            height: 600px;
+        }
+    }
 </style>

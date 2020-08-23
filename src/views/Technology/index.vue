@@ -1,14 +1,12 @@
 <template>
-  <main class="main-body">
+  <main class="main-body screen">
     <el-row :gutter="20">
       <el-col :md="14">
         <div class="article-main">
           <div class="main-title">最新文章</div>
-          <Article></Article>
-          <Article></Article>
-          <Article></Article>
-          <Article></Article>
-          <Article></Article>
+          <section v-for="item in articleList" :key="item.id">
+              <Article :article="item"></Article>
+          </section>
         </div>
       </el-col>
       <el-col :md="10">
@@ -17,9 +15,9 @@
           <div class="type-title title">文章分类</div>
           <div class="type-tags">
             <ul>
-              <li v-for="tag in tags" :key="tag">
-                <Tag></Tag>
-              </li>
+              <li v-for="tag in tags" :key="tag.id">
+                  <Tag :tags="tag"></Tag>
+                </li>
             </ul>
           </div>
         </div>
@@ -29,6 +27,7 @@
 </template>
 
 <script>
+import { getAllArticle, getTags } from '@/api/client';
 export default {
   components: {
     Banner: () => import("@/components/Banner"),
@@ -38,9 +37,24 @@ export default {
   },
   data() {
     return {
-      tags: 10,
+      tags: [],
+      articleList:[]
     };
   },
+  created() {
+    const res = getAllArticle();
+    res.then((data) => {
+        this.articleList = data;
+    }).catch((err) => {
+        console.log(err)
+    });
+    const res1 = getTags();
+    res1.then((data) => {
+        this.tags = data;
+    }).catch((err) => {
+        console.log(err)
+    });
+  }
 };
 </script>
 
@@ -79,4 +93,22 @@ export default {
     }
   }
 }
+@media screen and (max-width: 875px) {
+    .screen {
+      width: 90%;
+      padding: 10px 40px;
+    }
+  }
+  @media screen and (max-width: 575px) {
+    .screen {
+      width: 90%;
+      padding: 10px 20px;
+    }
+  }
+  @media screen and (max-width: 385px) {
+    .screen {
+      width: 90%;
+      padding: 10px 25px;
+    }
+  }
 </style>

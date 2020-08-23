@@ -6,11 +6,9 @@
         <el-col :md="14">
           <div class="article-main">
             <div class="main-title">最新文章</div>
-            <Article></Article>
-            <Article></Article>
-            <Article></Article>
-            <Article></Article>
-            <Article></Article>
+            <section v-for="item in articleList" :key="item.id">
+              <Article :article="item"></Article>
+            </section>
           </div>
         </el-col>
         <el-col :md="10">
@@ -19,8 +17,8 @@
             <div class="type-title title">文章分类</div>
             <div class="type-tags">
               <ul>
-                <li v-for="tag in tags" :key="tag">
-                  <Tag></Tag>
+                <li v-for="tag in tags" :key="tag.id">
+                  <Tag :tags="tag"></Tag>
                 </li>
               </ul>
             </div>
@@ -32,6 +30,8 @@
 </template>
 
 <script>
+import { getAllArticle, getTags } from "@/api/client.js"
+
 import img1 from "@/assets/images/banner/banner1.jpg";
 import img2 from "@/assets/images/banner/banner2.jpg";
 import img3 from "@/assets/images/banner/banner3.jpg";
@@ -50,9 +50,26 @@ export default {
         { id: 2, img_url: img2, path: "#" },
         { id: 3, img_url: img3, path: "#" },
       ],
-      tags: 10,
+      tags: [],
+      articleList:{}
     };
   },
+
+  created() {
+    const res = getAllArticle();
+    res.then((data) => {
+        this.articleList = data;
+    }).catch((err) => {
+        console.log(err)
+    });
+    
+    const res1 = getTags();
+    res1.then((data) => {
+        this.tags = data;
+    }).catch((err) => {
+        console.log(err)
+    });
+  }
 };
 </script>
 
