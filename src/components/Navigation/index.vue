@@ -15,7 +15,7 @@
             @mouseover="nav_list.toShow = true"
             @mouseout="nav_list.toShow = false"
           >
-            <router-link :to="nav_list.path">
+            <router-link :to="nav_list.path" @click.native="btn">
               <li class="nav-content">{{ nav_list.name }}</li>
             </router-link>
           </div>
@@ -39,7 +39,7 @@
             unique-opened
           >
             <span v-for="nav_list in nav_lists" :key="nav_list.id">
-              <router-link :to="nav_list.path">
+              <router-link :to="nav_list.path" @click.native="btn">
                 <el-menu-item :index="nav_list.id.toString()">
                   <span slot="title">{{nav_list.name}}</span>
                 </el-menu-item>
@@ -59,7 +59,7 @@
         </div>
         <div class="search-item">
           <el-input placeholder="请输入关键字" v-model="search" clearable></el-input>
-          <el-button>搜索</el-button>
+          <el-button @click="searchBtn">搜索</el-button>
         </div>
       </div>
     </div>
@@ -68,6 +68,7 @@
 
 <script>
 export default {
+  inject:['reload'],
   data() {
     return {
       nav_lists: [
@@ -96,7 +97,13 @@ export default {
           path: "/message",
           toShow: false,
         },
-        { id: 6, name: "关于我", path: "/aboutme", children: null, toShow: false },
+        {
+          id: 6,
+          name: "关于我",
+          path: "/aboutme",
+          children: null,
+          toShow: false,
+        },
       ],
       search: "",
       showSearch: false,
@@ -106,6 +113,19 @@ export default {
     toShow() {
       this.$store.commit("SET_SHOW", !this.$store.state.navigation.toShow);
     },
+    searchBtn() {
+      let path = '/technology?query='+ this.search;
+      if(this.$route.query.query !== this.search) {
+        this.$router.push(path);
+        this.reload();
+      }
+      
+      this.search = "";
+      this.showSearch = false;
+    },
+    btn() {
+      this.reload();
+    }
   },
 };
 </script>

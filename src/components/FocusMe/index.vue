@@ -2,9 +2,9 @@
   <div class="focus-on-me">
     <div class="title">关注我</div>
     <div class="focus-me">
-      <div class="focus-wetch cursor">
-        <i class="iconfont icon-3-copy"></i>
-        <div class="name">微信</div>
+      <div class="focus-gitee cursor">
+        <i class="iconfont icon-mayun"></i>
+        <div class="name">码云</div>
       </div>
       <div class="focus-qq cursor">
         <i class="iconfont icon-QQ1"></i>
@@ -38,9 +38,10 @@ export default {};
   display: flex;
   justify-content: space-around;
 }
-.focus-wetch .iconfont {
+.focus-gitee .iconfont {
   color: #b6aeae;
-  font-size: 50px;
+  font-size: 45px;
+  margin-top: 5px;
 }
 .focus-qq .iconfont {
   color: #b6aeae;
@@ -52,8 +53,8 @@ export default {};
   margin-top: 5px;
   display: block;
 }
-.focus-wetch .iconfont:hover {
-  color: #29a315;
+.focus-gitee .iconfont:hover {
+  color: #d81e06;
 }
 .focus-qq .iconfont:hover {
   color: #1296db;

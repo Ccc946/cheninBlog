@@ -4,6 +4,7 @@
       <el-col :md="14">
         <div class="article-main">
           <div class="main-title">最新文章</div>
+          <div class="no-article" v-if="articleList.length === 0">没搜索到相关文章,看点别的吧！^.^</div>
           <section v-for="item in articleList" :key="item.id">
               <Article :article="item"></Article>
           </section>
@@ -27,7 +28,7 @@
 </template>
 
 <script>
-import { getAllArticle, getTags } from '@/api/client';
+import { getAllArticle, getTags, searchArticle, tagArticle } from '@/api/client';
 export default {
   components: {
     Banner: () => import("@/components/Banner"),
@@ -42,18 +43,41 @@ export default {
     };
   },
   created() {
-    const res = getAllArticle();
-    res.then((data) => {
-        this.articleList = data;
-    }).catch((err) => {
-        console.log(err)
-    });
+    
     const res1 = getTags();
     res1.then((data) => {
         this.tags = data;
     }).catch((err) => {
         console.log(err)
     });
+    this.getData();
+  },
+  methods: {
+    getData() {
+      if(this.$route.query.query !== undefined) {
+        const search = searchArticle(this.$route.query.query);
+        search.then((data) => {
+            this.articleList = data;
+        }).catch((err) => {
+            console.log(err)
+        });
+      } else if (this.$route.query.tag !== undefined) {
+        const search = tagArticle(this.$route.query.tag);
+        search.then((data) => {
+            this.articleList = data;
+        }).catch((err) => {
+            console.log(err)
+        });
+        
+        }else {
+        const res = getAllArticle();
+        res.then((data) => {
+            this.articleList = data;
+        }).catch((err) => {
+            console.log(err)
+        });
+      }
+    }
   }
 };
 </script>
@@ -71,7 +95,11 @@ export default {
     padding-bottom: 10px;
   }
 }
-
+.no-article {
+  text-align: center;
+  padding: 15px 0;
+  font-size: 18px;
+}
 .article-type {
   background-color: #fff;
   padding: 10px;

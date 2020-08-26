@@ -41,7 +41,7 @@
                 <li v-for="item in commentList.rows" :key="item.id">
                     <Comment v-if="item.parent_id === 0" :commentList="item"></Comment>
                 </li>
-                <li v-if="commentList.length === 0">
+                <li v-if="commentList.count === 0">
                   <div class="no-comment">暂无评论,快来发表评论吧!</div>
                 </li>
             </ul>
@@ -52,7 +52,7 @@
 
 <script>
 
-import { getArticle, getComment } from "@/api/client.js"
+import { getArticle, getComment, readAdd } from "@/api/client.js"
 import { mavonEditor } from "mavon-editor";
 import "mavon-editor/dist/css/index.css";
 export default {
@@ -72,7 +72,16 @@ export default {
   created() {
     const res = getArticle(this.$route.params.id);
     res.then((data) => {
+        data.read_number += 1;
         this.article = data;
+        const read = readAdd({
+          id: data.id,
+          read_number: data.read_number
+        });
+        read.then(res => {
+        }).catch(e => {
+          console.log(e)
+        })
     }).catch((err) => {
         console.log(err)
     });

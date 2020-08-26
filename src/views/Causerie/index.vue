@@ -4,28 +4,10 @@
         <el-col :md="14">
           <div class="causerie-title">心情随笔</div>
           <ul>
-              <li>
+              <li v-for="item in dataList" :key="item.id">
                   <div class="causerie-item">
-                      <div class="causerie-date"><i class="iconfont icon-Date"></i>2020-2-05</div>
-                      <div class="causerie-content">哈哈哈哈</div>
-                  </div>
-              </li>
-              <li>
-                  <div class="causerie-item">
-                      <div class="causerie-date"><i class="iconfont icon-Date"></i>2020-2-05</div>
-                      <div class="causerie-content">哈哈哈哈</div>
-                  </div>
-              </li>
-              <li>
-                  <div class="causerie-item">
-                      <div class="causerie-date"><i class="iconfont icon-Date"></i>2020-2-05</div>
-                      <div class="causerie-content">哈哈哈哈</div>
-                  </div>
-              </li>
-              <li>
-                  <div class="causerie-item">
-                      <div class="causerie-date"><i class="iconfont icon-Date"></i>2020-2-05</div>
-                      <div class="causerie-content">哈哈哈哈</div>
+                      <div class="causerie-date"><i class="iconfont icon-Date"></i>{{ item.datetime | parseTime('{y}-{m}-{d}') }}</div>
+                      <div class="causerie-content">{{ item.content }}</div>
                   </div>
               </li>
           </ul>
@@ -38,9 +20,24 @@
 </template>
 
 <script>
+import { getCauserie } from '../../api/client'
     export default {
         components: {
             FocusMe: () => import('@/components/FocusMe')
+        },
+        data() {
+          return {
+            dataList: []
+          }
+        },
+        created() {
+          const res = getCauserie();
+          res
+          .then(data => {
+            this.dataList = data
+          }).catch(e => {
+            console.log(e);
+          })
         }
     }
 </script>

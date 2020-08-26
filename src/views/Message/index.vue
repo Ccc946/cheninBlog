@@ -7,7 +7,7 @@
                 <li v-for="item in commentList.rows" :key="item.id">
                     <Comment v-if="item.parent_id === 0" :commentList="item"></Comment>
                 </li>
-                <li v-if="commentList.length === 0">
+                <li v-if="commentList.count === 0">
                   <div class="no-comment">暂无评论,快来发表评论吧!</div>
                 </li>
             </ul>

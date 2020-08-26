@@ -2,7 +2,7 @@
     <div class="exceptional">
         <blockquote>赏博主一杯咖啡</blockquote>
         <div class="exceptional-item1">
-            <img src="../../assets/images/exceptional.jpg" alt="">
+            <img src="../../assets/images/exceptional.png" alt="">
         </div>
     </div>
 </template>

@@ -3,7 +3,6 @@
     <!-- 导航栏 -->
     <Navigation></Navigation>
     <!-- 主体内容 -->
-    
     <router-view class="content-view clearfix"></router-view>
     
     <!-- 返回顶部 -->

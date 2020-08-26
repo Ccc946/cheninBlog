@@ -29,58 +29,10 @@
           <blockquote>左邻右舍</blockquote>
           <div class="blog-item">
               <el-row :gutter="20">
-                  <el-col :lg="6" :md="8" :sm="12" :xs="12">
-                      <a href="/" class="blog-box">
-                        <img src="../../assets/images/avatar/1.jpg" alt="">
-                        <p>chenin</p>
-                    </a>
-                  </el-col>
-                  <el-col :lg="6" :md="8" :sm="12" :xs="12">
-                      <a href="/" class="blog-box">
-                        <img src="../../assets/images/avatar/1.jpg" alt="">
-                        <p>chenin</p>
-                    </a>
-                  </el-col>
-                  <el-col :lg="6" :md="8" :sm="12" :xs="12">
-                      <a href="/" class="blog-box">
-                        <img src="../../assets/images/avatar/1.jpg" alt="">
-                        <p>chenin</p>
-                    </a>
-                  </el-col>
-                  <el-col :lg="6" :md="8" :sm="12" :xs="12">
-                      <a href="/" class="blog-box">
-                        <img src="../../assets/images/avatar/1.jpg" alt="">
-                        <p>chenin</p>
-                    </a>
-                  </el-col>
-                  <el-col :lg="6" :md="8" :sm="12" :xs="12">
-                      <a href="/" class="blog-box">
-                        <img src="../../assets/images/avatar/1.jpg" alt="">
-                        <p>chenin</p>
-                    </a>
-                  </el-col>
-                  <el-col :lg="6" :md="8" :sm="12" :xs="12">
-                      <a href="/" class="blog-box">
-                        <img src="../../assets/images/avatar/1.jpg" alt="">
-                        <p>chenin</p>
-                    </a>
-                  </el-col>
-                  <el-col :lg="6" :md="8" :sm="12" :xs="12">
-                      <a href="/" class="blog-box">
-                        <img src="../../assets/images/avatar/1.jpg" alt="">
-                        <p>chenin</p>
-                    </a>
-                  </el-col>
-                  <el-col :lg="6" :md="8" :sm="12" :xs="12">
-                      <a href="/" class="blog-box">
-                        <img src="../../assets/images/avatar/1.jpg" alt="">
-                        <p>chenin</p>
-                    </a>
-                  </el-col>
-                  <el-col :lg="6" :md="8" :sm="12" :xs="12">
-                      <a href="/" class="blog-box">
-                        <img src="../../assets/images/avatar/1.jpg" alt="">
-                        <p>chenin</p>
+                  <el-col :lg="6" :md="8" :sm="12" :xs="12" v-for="item in blogs" :key="item.id">
+                      <a :href="item.address" class="blog-box" target="_blank">
+                        <img :src="item.image" alt="">
+                        <p>{{ item.name }}</p>
                     </a>
                   </el-col>
 
@@ -94,14 +46,8 @@
           <div class="blog-title title">大佬们</div>
           <div class="blog-content">
             <ul class="clearfix">
-              <li>
-                <a href="/">烟雨寒云</a>
-              </li>
-              <li>
-                <a href="/">烟雨寒云</a>
-              </li>
-              <li>
-                <a href="/">烟雨寒云</a>
+              <li v-for="item in dalao" :key="item.id">
+                <a :href="item.address" target="_blank">{{ item.name }}</a>
               </li>
             </ul>
           </div>
@@ -112,9 +58,33 @@
 </template>
 
 <script>
+import { getScommunities, getBcommunities } from '../../api/client'
 export default {
   components: {
     exceptional: () => import('@/components/Exceptional')
+  },
+  data() {
+    return {
+      blogs:[],
+      dalao:[]
+    }
+  },
+  created() {
+    const res = getScommunities();
+    res
+    .then(data => {
+      this.blogs = data
+    }).catch(e => {
+      console.log(e);
+    })
+
+    const res1 = getBcommunities();
+    res1
+    .then(data => {
+      this.dalao = data
+    }).catch(e => {
+      console.log(e);
+    })
   }
 };
 </script>

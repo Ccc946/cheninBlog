@@ -1,5 +1,5 @@
 <template>
-	<router-link :to="path">
+	<router-link :to="path" @click.native="tagBtn">
 		<div class="tag-box clearfix" :style="bgcolor">
 			<i class="sanjiao" :style="color"></i>
 			{{tags.name}}
@@ -9,6 +9,7 @@
 
 <script>
 export default {
+    inject:['reload'],
 	name: 'Tag',
 	props: {
         tags: {
@@ -18,10 +19,15 @@ export default {
     },
     data() {
         return {
-            path: '#',
+            path: '/technology?tag=' + this.tags.id,
             bgcolor: 'background-color: ' + this.tags.color + ';',
             color: 'border-right: 9px solid ' + this.tags.color + ';'
         }
+    },
+    methods: {
+        tagBtn() {
+            this.reload();
+        },
     }
 }
 </script>
