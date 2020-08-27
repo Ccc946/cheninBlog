@@ -31,7 +31,6 @@
           @click.stop
         >
           <el-menu
-            default-active="1"
             class="el-menu-vertical-demo"
             background-color="#545c64"
             active-text-color="#fa8c35"

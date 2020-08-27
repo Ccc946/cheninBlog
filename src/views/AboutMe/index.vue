@@ -1,9 +1,11 @@
 <template>
   <div class="aboutme screen">
     <h1>Chenin</h1>
-    <div class="information">chenin • 2019-09-07</div>
+    <div class="information">chenin • 2020-08-07</div>
     <div class="content">
-      <div class="myinfo">目前在读本科生，计算机科学与技术专业</div>
+      <div class="myinfo">目前在读本科生，计算机科学与技术专业,准大四一枚。。。
+        喜欢打篮球和coding ^.^
+      </div>
       <el-row :gutter="50">
         <el-col :sm="12">
           <div class="block">

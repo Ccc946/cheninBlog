@@ -201,6 +201,31 @@ export function getCauserie(){
 	})
 }
 
+// 获取轮播图
+export function getBanner(){
+	const res = axios.get('/api/client/getBanner');
+	return new Promise((resolve,reject)=>{
+		res
+		.then((result)=>{
+	        if(result.status===200){
+	        	return result.data;
+	        }else{
+	        	reject(result.status)
+	        }
+	    })
+	    .then((json)=>{
+    		if(json.code===0){
+                resolve(json.data);
+            }else{
+                reject(json.message);
+            }
+    	})
+	    .catch((e)=>{
+	    	reject(e.toString())
+	    })
+	})
+}
+
 // 获取周边社区 
 export function getScommunities(){
 	const res = axios.get('/api/client/getScommunities');

@@ -28,7 +28,7 @@
       <div class="desc">{{article.summarize || article.title}}
           <span class="look-more hover" @click="showArticle">查看更多</span>
       </div>
-      <div class="comment cursor">
+      <div class="comment cursor" @click="showComment">
           <i class="iconfont icon-huifu"></i>
           <div class="comment-total">{{article.comment_number}}</div>
           <div class="comment-title">回复</div>
@@ -61,6 +61,9 @@ export default {
   methods: {
     showArticle() {
       this.$router.push('/article/' + this.article.id)
+    },
+    showComment() {
+      this.$router.push('/article/' + this.article.id + '#comment')
     }
   },
 };

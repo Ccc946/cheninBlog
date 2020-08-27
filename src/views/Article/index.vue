@@ -36,7 +36,7 @@
     <div class="comment">
         <WriteComment title="发表评论" :articleID="article.id"></WriteComment>
         <div class="comment-content">
-            <div class="comment-area">评论区 <i>评论总数：{{commentList.count}}</i></div>
+            <div class="comment-area"  id="comment">评论区 <i>评论总数：{{commentList.count}}</i></div>
             <ul>
                 <li v-for="item in commentList.rows" :key="item.id">
                     <Comment v-if="item.parent_id === 0" :commentList="item"></Comment>
@@ -86,6 +86,13 @@ export default {
         console.log(err)
     });
     this.getData();
+  },
+  mounted() {
+    if(this.$route.hash === '#comment') {
+      document.getElementById("comment").scrollIntoView();
+    } else {
+      document.getElementById("app").scrollIntoView();
+    }
   },
   methods: {
     getData() {

@@ -1,20 +1,29 @@
 <template>
   <div id="banner">
     <el-carousel trigger="click">
-      <el-carousel-item v-for="item in listImg" :key="item.id">
-        <a :href="item.path"><img :src="item.img_url" alt=""></a>
+      <el-carousel-item v-for="item in bannerlist" :key="item.id">
+        <a :href="item.path" target="_blank"><img :src="item.img_url" alt=""></a>
       </el-carousel-item>
     </el-carousel>
   </div>
 </template>
 
 <script>
+import { getBanner } from '../../api/client'
 export default {
-  props: ['listImg'],
   data() {
     return {
+      bannerlist:[]
     };
   },
+  created() {
+    const res = getBanner();
+    res.then(data => {
+      this.bannerlist = data
+    }).catch(e => {
+      console.log(e)
+    });
+  }
 };
 </script>
 

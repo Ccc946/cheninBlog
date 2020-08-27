@@ -3,23 +3,33 @@
     <div class="title">关注我</div>
     <div class="focus-me">
       <div class="focus-gitee cursor">
-        <i class="iconfont icon-mayun"></i>
-        <div class="name">码云</div>
+        <a href="https://gitee.com/cheninccc" target="_blank">
+          <i class="iconfont icon-mayun"></i>
+          <div class="name">码云</div>
+        </a>
       </div>
-      <div class="focus-qq cursor">
+      <div class="focus-qq cursor" @click="copy('1185288254')">
         <i class="iconfont icon-QQ1"></i>
         <div class="name">QQ</div>
       </div>
       <div class="focus-git cursor">
-        <i class="iconfont icon-git"></i>
-        <div class="name">GitHub</div>
+        <a href="https://github.com/Ccc946" target="_blank">
+          <i class="iconfont icon-git"></i>
+          <div class="name">GitHub</div>
+        </a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    copy(data) {
+      
+    }
+  }
+};
 </script>
 
 <style lang="less" scoped>

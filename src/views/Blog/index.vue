@@ -11,7 +11,7 @@
                       <p>站点名称：chenin博客</p>
                       <p>站点描述：记录生活和分享知识</p>
                       <p>站点地址：<a>http://cheninccc.cn/ </a></p>
-                      <p>站点图标：<a>https//cheninccc.cn/logo.png</a></p>
+                      <p>站点图标：<a>http//cheninccc.cn/logo.png</a></p>
                   </div>
               </code>
           </div>
@@ -38,7 +38,8 @@
 
               </el-row>
           </div>
-          <exceptional></exceptional>
+          
+          
         </div>
       </el-col>
       <el-col :md="6">
@@ -53,20 +54,40 @@
           </div>
         </div>
       </el-col>
+      
     </el-row>
+    <div class="comment">
+              <WriteComment :articleID="articleID"></WriteComment>
+              <div class="comment-content">
+                  <div class="comment-area">留言区 <i>留言总数：{{commentList.count}}</i></div>
+                  <ul>
+                      <li v-for="item in commentList.rows" :key="item.id">
+                          <Comment v-if="item.parent_id === 0" :commentList="item"></Comment>
+                      </li>
+                      <li v-if="commentList.count === 0">
+                        <div class="no-comment">暂无评论,快来发表评论吧!</div>
+                      </li>
+                  </ul>
+              </div>
+          </div>
   </main>
 </template>
 
 <script>
-import { getScommunities, getBcommunities } from '../../api/client'
+import { getScommunities, getBcommunities, getComment } from '../../api/client'
 export default {
+
   components: {
+    Comment: () => import('@/components/Comment'),
+    WriteComment: () => import('@/components/WriteComment'),
     exceptional: () => import('@/components/Exceptional')
   },
   data() {
     return {
       blogs:[],
-      dalao:[]
+      dalao:[],
+      commentList: {},
+      articleID: -2
     }
   },
   created() {
@@ -85,6 +106,12 @@ export default {
     }).catch(e => {
       console.log(e);
     })
+    const res2 = getComment(-2);
+    res2.then((data) => {
+        this.commentList = data;
+    }).catch((err) => {
+        console.log(err)
+    });
   }
 };
 </script>
@@ -135,7 +162,7 @@ blockquote {
   line-height: 1.5;
   font-size: 0.96em;
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  background: #f1f3f3;
+  background: #2B2B2B;
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 5px;
   display: block;
@@ -159,8 +186,7 @@ blockquote {
 .pre::after {
   content: attr(data-lang);
   text-align: right;
-  background: #ebeded;
-  color: #cececf;
+  background: #202020;
   width: 100%;
   height: 32px;
   display: block;
@@ -188,6 +214,10 @@ blockquote {
       p {
           line-height: 25px;
           font-size: 18px;
+          color: #ccc;
+          a:hover {
+            color: #999;
+          }
       }
   }
 }
@@ -215,6 +245,22 @@ blockquote {
         }
     }
 }
+.comment {
+     padding: 15px;
+     
+ }
+ .comment-area {
+     padding-bottom: 10px;
+     border-bottom: 1px solid #999;
+     i {
+         font-size: 13px;
+         color: #999;
+     }
+ }
+ .no-comment {
+   text-align: center;
+   padding: 20px 0;
+ }
 @media screen and (max-width: 875px) {
     .screen {
       width: 90%;
