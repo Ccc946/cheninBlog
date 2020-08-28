@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import { createStore } from './store'
 import '@/styles/index.less'
-import '@/plugin/element/index'
+// import '@/plugin/element/index'
 //过滤器
 import * as filters from './filters'
 import './utils/title'
