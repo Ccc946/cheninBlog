@@ -9,12 +9,15 @@ Vue.use(VueRouter)
 
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   routes
 })
 
 router.beforeEach((to, from, next) => {
   NProgress.start()
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
   next()
   })
   

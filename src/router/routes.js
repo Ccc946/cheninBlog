@@ -7,37 +7,58 @@ const constantRouterMap = [
         {
           path: '/',
           name: 'Home',
-          component: () =>import('@/views/Home/index.vue')
+          component: () =>import('@/views/Home/index.vue'),
+          meta: {
+            title: 'chenin博客'
+          }
         },
         {
           path: '/message',
           name: 'Message',
-          component: () =>import('@/views/Message/index.vue')
+          component: () =>import('@/views/Message/index.vue'),
+          meta: {
+            title: '信息留言'
+          }
         },
         {
           path: '/causerie',
           name: 'Causerie',
-          component: () =>import('@/views/Causerie/index.vue')
+          component: () =>import('@/views/Causerie/index.vue'),
+          meta: {
+            title: '心情随笔'
+          }
         },
         {
           path: '/technology',
           name: 'Technology',
-          component: () =>import('@/views/Technology/index.vue')
+          component: () =>import('@/views/Technology/index.vue'),
+          meta: {
+            title: '技术分享'
+          }
         },
         {
           path: '/blog',
           name: 'Blog',
-          component: () =>import('@/views/Blog/index.vue')
+          component: () =>import('@/views/Blog/index.vue'),
+          meta: {
+            title: '博客社区'
+          }
         },
         {
           path: '/aboutme',
           name: 'AboutMe',
-          component: () =>import('@/views/AboutMe/index.vue')
+          component: () =>import('@/views/AboutMe/index.vue'),
+          meta: {
+            title: '关于我'
+          }
         },
         {
           path: '/article/:id',
           name: 'Article',
-          component: () =>import('@/views/Article/index.vue')
+          component: () =>import('@/views/Article/index.vue'),
+          meta: {
+            title: 'chenin博客'
+          }
         },
         
         

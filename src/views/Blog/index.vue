@@ -1,7 +1,7 @@
 <template>
   <main class="main-body screen">
     <el-row :gutter="20">
-      <el-col :md="18">
+      <el-col :md="16">
         <div class="blog-dalao">
           <div class="blog-title title">周边博客</div>
           <blockquote>本站信息</blockquote>
@@ -10,8 +10,8 @@
                   <div class="pre-content">
                       <p>站点名称：chenin博客</p>
                       <p>站点描述：记录生活和分享知识</p>
-                      <p>站点地址：<a>http://cheninccc.cn/ </a></p>
-                      <p>站点图标：<a>http//cheninccc.cn/logo.png</a></p>
+                      <p>站点地址：<a>http://www.cheninccc.cn/ </a></p>
+                      <p>站点图标：<a>http://www.cheninccc.cn/logo.png</a></p>
                   </div>
               </code>
           </div>
@@ -42,9 +42,9 @@
           
         </div>
       </el-col>
-      <el-col :md="6">
+      <el-col :md="8">
         <div class="blog-dalao">
-          <div class="blog-title title">大佬们</div>
+          <div class="blog-title title">其他链接</div>
           <div class="blog-content">
             <ul class="clearfix">
               <li v-for="item in dalao" :key="item.id">
@@ -235,7 +235,7 @@ blockquote {
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 150px;
         }
         p {
             height: 50px;

@@ -22,6 +22,7 @@
           </div>
         </el-col>
         <el-col :sm="12">
+          <p class="pic">戳我看看！<i class="iconfont icon-shouzhi"></i></p>
           <div class="demo-image__preview">
             <el-image style="width: 100px; height: 100px" :src="url" :preview-src-list="srcList"></el-image>
           </div>
@@ -56,10 +57,13 @@ export default {
     return {
       activities: [],
       url:
-        "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
-      srcList: [
-        "https://fuss10.elemecdn.com/8/27/f01c15bb73e1ef3793e64e6b7bbccjpeg.jpeg",
         "https://fuss10.elemecdn.com/1/8e/aeffeb4de74e2fde4bd74fc7b4486jpeg.jpeg",
+      srcList: [
+        "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1598586519372&di=ae3c3d1eaaf50decdfb60a1960fd3421&imgtype=0&src=http%3A%2F%2F08img.shaqm.com%2Fmobile%2F20180409%2F66f064b5d334dc5c35f771dcc5b3a5da.jpeg",
+        "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1598586723728&di=ca4e873455eff244ac396c49c5aa624f&imgtype=0&src=http%3A%2F%2Fi2.wp.com%2Fclutch.hk%2Fwp-content%2Fuploads%2F2015%2F05%2Fhawks-cavaliers-g1.jpg%3Fresize%3D1200%252C788",
+        "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1598586749307&di=b7740e2d43056596bd5a4fb9fadbb9ef&imgtype=0&src=http%3A%2F%2Fi1.sinaimg.cn%2Fty%2Fk%2Fp%2F2011-03-02%2FU5555P6T12D5472189F44DT20110302134524.jpg",
+        "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1598586888620&di=17cb533c7d2192922b2ca31002ff726c&imgtype=0&src=http%3A%2F%2Fimg.weitiyuba.com%2Fmmbiz_jpg%2FLAakZwuLkNHKmzfibpeCcTR4aFBHVGBvM0e569fYPD70yalsSPNNmWfcjiaRIZzaChGubfT0A2qzBCDgTZEg8Mrw%2F0%3Fwx_fmt.jpeg"
+
       ],
       commentList: {},
       articleID: -1
@@ -110,6 +114,15 @@ export default {
          font-size: 13px;
          color: #999;
      }
+ }
+ .pic {
+   height: 30px;
+   line-height: 30px;
+   font-size: 16px;
+   .iconfont {
+     font-size: 25px;
+     color: #409eff;
+   }
  }
  .no-comment {
    text-align: center;

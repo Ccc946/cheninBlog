@@ -37,12 +37,23 @@ export default {
     background-repeat: repeat;
     width: 100%;
   }
+
 @media screen and (min-width: 1200px) {
   .content-view {
     margin-top: 80px;
     background-color: #F2E8D9;
     width: 80%;
     margin-left: 10%;
+    box-shadow: 2px 2px 10px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .content-view {
+    margin-top: 80px;
+    background-color: #F2E8D9;
+    width: 70%;
+    margin-left: 15%;
     box-shadow: 2px 2px 10px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
   }

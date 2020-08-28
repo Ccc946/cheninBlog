@@ -44,7 +44,7 @@
         },
         data() {
             return {
-                img: 'http://localhost:3000/images/avatar/' + this.children.avatar + '.jpg',
+                img: 'http://cheninccc.cn:3000/images/avatar/' + this.children.avatar + '.jpg',
                 reply: false
             }
         },

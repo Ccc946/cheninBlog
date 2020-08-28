@@ -6,6 +6,7 @@ import '@/styles/index.less'
 import '@/plugin/element/index'
 //过滤器
 import * as filters from './filters'
+import './utils/title'
 Object.keys(filters).forEach((key) => {
   Vue.filter(key, filters[key])
 })

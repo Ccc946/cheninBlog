@@ -49,7 +49,7 @@ import { getChildrenComment } from "@/api/client.js"
         data() {
             return {
                 reply: false,
-                img: 'http://localhost:3000/images/avatar/' + this.commentList.avatar + '.jpg',
+                img: 'http://cheninccc.cn:3000/images/avatar/' + this.commentList.avatar + '.jpg',
                 children: []
             }
         },
